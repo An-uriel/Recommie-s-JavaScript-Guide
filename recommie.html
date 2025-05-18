@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recommie's JavaScript Guide</title>
+  <link rel="stylesheet" href="recommie.css" />
+</head>
+<body>
+  <header>
+    <h1>Recommie's JavaScript Guide</h1>
+    <nav>
+      <a href="#" onclick="showSection('sources')">Sources</a>
+      <a href="#" onclick="showSection('about')">About</a>
+      <a href="#" onclick="logout()">Exit</a>
+    </nav>
+  </header>
+
+  <div id="main">
+    <section>
+      <!-- Greeting -->
+      <div id="greeting">
+        <p id="greetingText">Welcome, Student!</p>
+      </div>
+
+      <!-- Login Box -->
+      <div id="loginBox">
+        <h2>Get Started!</h2>
+        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <button onclick="greetStudent()">Ready</button>
+      </div>
+
+      <!-- Question Container -->
+      <div id="questionContainer">
+        <h3 id="questionText">Question will appear here</h3>
+        <div id="buttons">
+          <button type="button" class="answer-option" id="A" onclick="checkAnswer('A')">Option A</button>
+          <button type="button" class="answer-option" id="B" onclick="checkAnswer('B')">Option B</button>
+          <button type="button" class="answer-option" id="C" onclick="checkAnswer('C')">Option C</button>
+          <button type="button" class="answer-option" id="D" onclick="checkAnswer('D')">Option D</button>
+          <button id="nextQuestion" onclick="loadNextQuestion()">Next Question</button>
+        </div>
+      </div>
+
+      <!-- Study Habits -->
+      <div id="studyHabitsSection">
+        <h2>Study Habits Assessment</h2>
+        <p>Please answer these questions about your study habits:</p>
+        <div id="studyHabitsQuestions">
+          <!-- Dynamically loaded -->
+        </div>
+        <button id="submitStudyHabits" onclick="submitStudyHabits()">Submit & See Results</button>
+      </div>
+
+      <!-- Results -->
+      <div id="resultsContainer">
+        <h2>Quiz Results</h2>
+        <div id="resultsSummary"></div>
+        <div id="recommendationBox"></div>
+        <div id="resultsDetails"></div>
+      </div>
+
+      <!-- About Section -->
+      <div id="aboutSection">
+        <h2>About This Website</h2>
+        <p>This website is designed for first-year students seeking a personalized approach to learning JavaScript. Since everyone learns differently, the interactive questions help students discover their study habits and assess their programming level. By engaging with these exercises, learners can identify areas for improvement and build a strong foundation in coding. And if this website helps even a little, Recommie is always happy to be part of the journey!</p>
+        <p>Short for "recommendations," Recommie isn't just a name; it's a friendly presence designed to make learning feel less lonely. Whether you're tackling tough concepts or celebrating small wins, Recommie is here to keep you company and make coding more engaging.</p>
+        <h4>Project Team:</h4>
+        <p>Aliviado, Angel C. (My back hurrrtsss)</p>
+        <p>Sigbat, Cherry Ann</p>
+        <button onclick="showSection('main')">Back to Main</button>
+      </div>
+
+      <!-- Sources Section -->
+      <div id="sourcesSection">
+        <h2>Sources</h2>
+        <p>Informations that are based on for this website's accuracy.</p>
+        <ul>
+          <li><a href="https://www.coursera.org/articles/study-habits" target="_blank">11 Good Study Habits to Develop</a></li>
+          <li><a href="https://www.cityu.edu/blog/good-study-habits/" target="_blank">10 Good Study Habits To Develop</a></li>
+          <li><a href="https://www.lifescied.org/doi/10.1187/cbe.20-05-0091" target="_blank">Study Habits and Performance</a></li>
+          <li><a href="https://flowster.app/the-impact-of-technology-on-studying-habits-trends-and-insights/" target="_blank">Impact of Technology</a></li>
+          <li><a href="https://www.listening.com/blog/10-study-habits-of-highly-effective-students/" target="_blank">Highly Effective Students</a></li>
+          <li><a href="https://faculty.washington.edu/dchinn/study-habits.pdf" target="_blank">Successful Students Study Habits</a></li>
+          <li><a href="https://www.jotse.org/index.php/jotse/article/view/504/392" target="_blank">Filipino Students Study Habits</a></li>
+          <li><a href="https://www.kumon.com/resources/7-important-study-habits-for-school/" target="_blank">Kumon Study Tips</a></li>
+          <li><a href="https://successatschool.org/advice/education-blog/the-study-habits-of-successful-students/798" target="_blank">Success at School</a></li>
+          <li><a href="https://www.splashlearn.com/blog/study-habits-of-students/" target="_blank">12 Study Habits</a></li>
+          <li><a href="https://www.educationcorner.com/habits-of-successful-students/" target="_blank">Education Corner</a></li>
+          <li><a href="https://gradepowerlearning.com/resources/study-skills/good-study-habits-every-successful-student-has/" target="_blank">Grade Power Learning</a></li>
+          <li><a href="https://www.bowdoin.edu/baldwin-center/for-students/learning-strategies/studying.html" target="_blank">Bowdoin Studying Tips</a></li>
+        </ul>
+        <button onclick="showSection('main')">Back to Main</button>
+      </div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside id="infoBox">
+      <div id="mascot">Recommie</div>
+      <div id="description">
+        <h3>Boost Your Coding Skills!</h3>
+        <p>Take this 10-question quiz to get personalized study tips and see where you rank as a programmer. Recommie wishes you good luck!</p>
+      </div>
+
+      <!-- Progress Tracker -->
+      <div id="studentRecord">
+        <h3>Your Progress Tracker</h3>
+        <div id="progressList">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <!-- Thank You -->
+      <div id="thankYouBox">
+        <h3>Thank You!</h3>
+        <p>Visiting our website as part of your learning journey is greatly appreciated. We hope our team behind this will pass!</p>
+        <button onclick="resetQuiz()">Take Test Again</button>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p><strong>Disclaimer:</strong> These recommendations are based on available information and should be used as guidance, not absolute assessments.</p>
+  </footer>
+
+  <script src="recommie.js"></script>
+</body>
+</html>
